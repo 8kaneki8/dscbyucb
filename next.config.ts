@@ -1,3 +1,10 @@
 import type { NextConfig } from "next";
-const nextConfig: NextConfig = { poweredByHeader: false, experimental: { serverActions: { bodySizeLimit: "10mb" } } };
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const nextConfig: NextConfig = {
+  output: "export",
+  basePath: isGitHubPages ? "/dscbyucb" : "",
+  trailingSlash: true,
+  images: { unoptimized: true },
+  poweredByHeader: false
+};
 export default nextConfig;
